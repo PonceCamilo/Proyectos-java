@@ -1,17 +1,61 @@
 package camilo.ponce;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
   public static void main(String[] args) {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    System.out.printf("Hello and welcome!");
+    // Creamos el objeto scanner para leer la entrada de la consola
+    Scanner scanner = new Scanner(System.in);
+    String continuar;
 
-    for (int i = 1; i <= 5; i++) {
-      //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-      // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-      System.out.println("i = " + i);
-    }
+    do {
+      System.out.println("por favor introduce 2 numeros");
+
+      System.out.print("Introduce el primer número (a): ");
+      double a = Integer.parseInt(scanner.nextLine());
+
+      System.out.print("Introduce el segundo número (b): ");
+      double b = Integer.parseInt(scanner.nextLine());
+
+      System.out.println("por favor selecciona el operador: + - * /");
+
+      String operador = scanner.nextLine();
+
+      while (!operador.matches("[+\\-*/]")) {
+        System.out.println("Operador no válido. Por favor selecciona +, -, *, o /.");
+        operador = scanner.nextLine();
+      }
+
+      switch (operador) {
+        case "+":
+          System.out.println("El resultado es: " + (a + b));
+          break;
+        case "-":
+          System.out.println("El resultado es: " + (a - b));
+          break;
+        case "*":
+          System.out.println("El resultado es: " + (a * b));
+          break;
+        case "/":
+          if (b != 0) {
+            System.out.println("El resultado es: " + (a / b));
+          } else {
+            System.out.println("Error: No se puede dividir por cero.");
+          }
+          break;
+      }
+
+      System.out.println("Desea continuar? (s/n)");
+
+      continuar = scanner.nextLine();
+
+      while (!continuar.equalsIgnoreCase("s") && !continuar.equalsIgnoreCase("n")) {
+        System.out.println("Entrada no válida. Por favor ingresa 's' para continuar o 'n' para salir.");
+        continuar = scanner.nextLine();
+      }
+
+    } while (continuar.equalsIgnoreCase("s"));
+
+    scanner.close(); // Es buena práctica cerrar el scanner al terminar
   }
 }
