@@ -12,12 +12,14 @@ public class ProductoFisico extends Producto{
     return stock;
   }
 
-  public void reducirStock(int cantidad){
-    stock -= cantidad;
+  public void reducirStock(ProductoFisico pf, int cantidad) {
+    if (cantidad <= pf.getStock()) {
+      stock -= cantidad;
+    }
   }
 
   @Override
-  public String toString(){
-    return "ProductoFisico{" + "nombre='" + getNombre() + '\'' + ", precio=" + getPrecio() + ", id=" + getId() + ", stock=" + getStock() + '}';
+  public String toString () {
+    return "ProductoFisico{" + "nombre='" + getNombre() + '\'' + ", precio=" + getPrecio() + ", id=" + getId() + ", stock='" + getStock() + '\'' + '}';
   }
 }

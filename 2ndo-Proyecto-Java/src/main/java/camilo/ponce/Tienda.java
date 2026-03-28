@@ -5,21 +5,16 @@ import java.util.List;
 import java.util.Optional;
 
 public class Tienda{
-  private final ArrayList<Producto> Productos;
-  private final ArrayList<Empleado> Empleados;
-
-  public Tienda(){
-    Productos = new ArrayList<>();
-    Empleados = new ArrayList<>();
-  }
+  private final ArrayList<Producto> productos = new ArrayList<>();
+  private final ArrayList<Empleado> empleados = new ArrayList<>();
 
   public ArrayList<Producto> getProductos() {
-    return Productos;
+    return productos;
   }
 
   public ArrayList<ProductoFisico> getProductosFisicos() {
     ArrayList<ProductoFisico> productosFisicos = new ArrayList<>();
-    for (Producto p : Productos) {
+    for (Producto p : productos) {
       if (p instanceof ProductoFisico)
         productosFisicos.add((ProductoFisico) p);
       }
@@ -27,20 +22,20 @@ public class Tienda{
   }
 
   public void agregarProducto(Producto p){
-    if(Productos.size() < 10){
-      Productos.add(p);
+    if(productos.size() < 10){
+      productos.add(p);
     } else{
       System.out.print("Cantidad maxima de productos alcanzada");
     }
   }
 
   public Producto getProducto(int id){
-    Optional<Producto> producto = Productos.stream().filter(p -> p.getId() == id).findFirst();
+    Optional<Producto> producto = productos.stream().filter(p -> p.getId() == id).findFirst();
     return producto.orElse(null);
   }
 
   public ProductoFisico getProductoFisico(int id){
-    Optional<Producto> producto = Productos.stream().filter(p -> p.getId() == id).findFirst();
+    Optional<Producto> producto = productos.stream().filter(p -> p.getId() == id).findFirst();
     if(producto.isPresent() && producto.get() instanceof ProductoFisico){
       return (ProductoFisico) producto.get();
     } else {
@@ -49,20 +44,20 @@ public class Tienda{
   }
 
   public void agregarEmpleado(Empleado e){
-    if(Empleados.size() < 5){
-      Empleados.add(e);
+    if(empleados.size() < 5){
+      empleados.add(e);
     } else{
       System.out.print("Cantidad maxima de empleados alcanzada");
     }
   }
 
   public List<Empleado> getEmpleados(){
-    return Empleados;
+    return empleados;
   }
 
-  public Double calcularNominaMensual(){
+  public double calcularNominaMensual(){
     double total = 0;
-    for(Empleado e : Empleados){
+    for(Empleado e : empleados){
       total += e.calcularSueldo();
     }
     return total;
@@ -71,10 +66,10 @@ public class Tienda{
   public void venderProductoFisico(int id, int cantidad){
     ProductoFisico pf = getProductoFisico(id);
     if(cantidad <= pf.getStock()) {
-      pf.reducirStock(cantidad);
+      pf.reducirStock(pf, cantidad);
       System.out.println("Venta realizada con exito.");
       if(pf.getStock() == 0){
-        Productos.remove(pf);
+        productos.remove(pf);
       }
     } else {
       System.out.println("No se pudo completar la venta por falta de stock.");

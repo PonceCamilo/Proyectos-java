@@ -49,8 +49,8 @@ public class Main {
           System.out.println("Producto encontrado: " + tienda.getProducto(id));
           break;
         case 3:
-          if(tienda.getProductosFisicos() == null){
-            System.out.println("No hay productos fisicos en la tienda.");
+          if (tienda.getProductosFisicos().isEmpty()) {
+            System.out.println("No hay productos físicos en la tienda.");
             break;
           }
           System.out.println("Productos fisicos a la venta: ");

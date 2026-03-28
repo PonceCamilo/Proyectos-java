@@ -14,4 +14,9 @@ public class EmpleadoFreelance extends Empleado{
   public double calcularSueldo() {
     return horasTrabajadas * valorHora;
   }
+
+  @Override
+  public String toString() {
+    return "EmpleadoFreelance{" + super.toString() + ", horasTrabajadas=" + horasTrabajadas + ", valorHora=" + valorHora + "}";
+  }
 }

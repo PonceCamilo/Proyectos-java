@@ -7,7 +7,11 @@ public class Producto {
 
   public Producto(String nombre, double precio, int id) {
     this.nombre = nombre;
-    this.precio = precio;
+    if (precio < 0) {
+      throw new IllegalArgumentException("El precio no puede ser negativo");
+    } else {
+      this.precio = precio;
+    }
     this.id = id;
   }
 
@@ -30,6 +34,10 @@ public class Producto {
 
   @Override
   public boolean equals(Object obj) {
-    return this.getId() == ((Producto) obj).getId();
+    if (obj == null) {
+      return false;
+    } else {
+      return this.getId() == ((Producto) obj).getId();
+    }
   }
 }

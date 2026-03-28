@@ -12,4 +12,9 @@ public class EmpleadoFijo extends Empleado{
   public double calcularSueldo() {
     return sueldoBase;
   }
+
+  @Override
+  public String toString() {
+    return "EmpleadoFijo{" + super.toString() + ", sueldoBase=" + sueldoBase + "}";
+  }
 }
