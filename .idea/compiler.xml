@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="3er-Proyecto-Java" />
         <module name="2ndo-Proyecto-Java" />
         <module name="Inicio-Proyectos-Java" />
       </profile>
